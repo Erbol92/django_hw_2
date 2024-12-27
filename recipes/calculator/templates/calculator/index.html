@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепты</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <select name="dish">
+    {% for el in DATA %}
+    <option value="{{el}}">{{el}}</option>
+    {% endfor %}
+</select>
+    <button type="submit">применить</button>
+</form>
+<hr>
+
+{% for ingredient, amount in recipe.items %}
+<p>{{ ingredient }}: {{ amount }}</p>
+{% empty %}
+<p>Такого рецепта не знаю :(</p>
+{% endfor %}
+<hr>
+{% for el in DATA %}
+<a href="/{{el}}">{{el}}</a>
+    {% endfor %}
+</body>
+</html>
